@@ -1,0 +1,18 @@
+<section>
+    <div class=" d-flex justify-content-center">
+        <form class="col-md-6" #loginForm="ngForm" (ngSubmit)="doLogin(loginForm)" novalidate>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" ngModel placeholder="email" id="email"  name="email" #emailInput=ngModel required email>
+                <div [hidden]="!(emailInput.dirty && emailInput.invalid)"  class="alert alert-danger">Please Enter Email Id</div>
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" ngModel placeholder="password" id="pwd" name="pwd" #passwordInput=ngModel required>
+                <div [hidden]="!(passwordInput.dirty && passwordInput.invalid)"  class="alert alert-danger">Please Enter valid Password</div>
+            </div>
+           
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+        </form>
+    </div>
+</section>

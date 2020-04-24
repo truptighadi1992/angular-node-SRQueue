@@ -1,0 +1,43 @@
+
+<div *ngIf="totalReq == 0">
+    <h4>No Records Found</h4>
+</div>
+<div *ngIf="totalReq > 0">
+    <label>Total Service Requests: {{totalReq}}</label>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Service Request</th>
+            <th>System ID</th>
+            <th>Type</th>
+            <th>Sub Type</th>
+            <th>Modality</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th *ngIf="userAuth">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let sr of srList  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+            <td>{{sr.caseId}}</td>
+            <td>{{sr.systemInfo.systemId}}</td>
+            <td>{{sr.type}}</td>
+            <td>{{sr.subtype}}</td>
+            <td>{{sr.systemInfo.modality}}</td>
+            <td>{{sr.status}}</td>
+            <td>{{sr.description}}</td>
+            <td *ngIf="userAuth">
+                <div style="font-size: 1.2em;">
+                    <span style="margin-right:20px">
+                        <i class="fa fa-pencil" style="cursor: pointer;" aria-hidden="true"  [routerLink]="['/editsr',sr.caseId]"></i>
+                    </span>
+                    <span>    
+                        <i class="fa fa-trash" style="cursor: pointer;" aria-hidden="true" (click)="doDeleteSR(sr)"></i>
+                    </span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="totalReq" (pageChange)="pageChanged($event)"></ngb-pagination>
+</div>    

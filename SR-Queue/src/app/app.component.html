@@ -1,0 +1,27 @@
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row custom-nav">
+  <div class="navbar-nav-scroll">  
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+   
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">My Service Requests</a>
+      </li>
+      <li class="nav-item" [hidden]="!userAuth">
+        <a class="nav-link" [routerLink]="['/createsr']" routerLinkActive="active">Create Service Request</a>
+      </li>
+      
+  </ul>
+  </div>
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item" [hidden]="userAuth">
+      <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+    </li>
+    <li class="nav-item" [hidden]="userAuth">
+      <a class="nav-link" [routerLink]="['/signup']" routerLinkActive="active">Sign Up</a>
+    </li>
+    <button [hidden]="!userAuth" (click)="doLogout()" class="btn" style="color:#dc3545">Log Out</button>
+  
+  </ul>
+</header>
+<main class="bd-content p-5">
+  <router-outlet></router-outlet>
+</main>

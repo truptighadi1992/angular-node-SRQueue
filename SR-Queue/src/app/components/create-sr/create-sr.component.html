@@ -1,0 +1,46 @@
+<div class="col-md-4" *ngIf="!systemDataFetched">
+    <p>Please Enter System Id to continue</p>
+    <input type="text" id="systemId" class="form-control"  [(ngModel)]="systemId" /><br>
+    <button class="btn btn-info" (click)="getSystemDetails()">Continue</button>
+</div>
+
+<div *ngIf="systemDataFetched">
+    <div style="display:inline-block; margin-right: 15px;">
+        <p><b>{{systemDataFetched.systemId}}</b> | {{systemDataFetched.modality}} | {{systemDataFetched.country}}</p>
+    </div>
+    <div style="display:inline-block; font-size: 18px;" *ngIf = "!editMode">
+        <i class="fa fa-pencil" style="cursor: pointer;" aria-hidden="true" (click)="systemDataFetched = null;systemId=''"></i>
+    </div>
+</div>
+<hr>
+
+<div class="col-md-4"  *ngIf="systemDataFetched">
+    <form [formGroup]="createSRForm" (submit)="createSR()">
+            <div class="form-group">
+                <label for="type">Type</label>
+                <select id="type" class="form-control"  formControlName="type">
+                    <option value="" disabled selected>Choose Type</option>
+                    <option *ngFor="let type of SrTypes" [value]="type">
+                        {{ type }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subtype">Sub Type</label>
+                <select id="subtype" class="form-control" formControlName="subtype">
+                    <option value="" disabled selected>Choose Sub Type</option>
+                    <option *ngFor="let subtype of SrSubTypes" [value]="subtype">
+                        {{subtype}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="email">Description</label>
+                <textarea class="form-control" id="description" formControlName="description"></textarea>
+            </div>
+           
+            <button type="submit" class="btn btn-primary" [disabled]="!createSRForm.valid">{{editMode? 'Update': 'Add'}}</button>
+           
+    </form>
+</div>
+ 
