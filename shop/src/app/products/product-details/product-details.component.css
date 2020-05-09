@@ -1,0 +1,28 @@
+.warn{
+    color:orange;
+}
+.rating-container > .mat-icon{
+    font-size: 20px;
+}
+.product-content > .mat-card{
+    border: none;
+    box-shadow: none;
+}
+.action-button{
+    font-size: 0.8em;
+}
+.small{
+    font-size: 1.8em;
+    margin-right: 0.1em;
+}
+.title{
+    margin-bottom: 0.4em;
+    font-weight: 600;
+}
+.content{
+    color:rgba(0,0,0,.54);
+}
+.product-image{
+    width: 250px;
+    height: 250px;
+}

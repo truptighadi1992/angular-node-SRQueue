@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/manifest.webmanifest",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name":"product-list-api",
+      "urls" :["http://localhost:3000/api/products"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout":"10s",
+        "maxAge": "1d",
+        "maxSize": 100
+      }
+    },
+    {
+      "name":"product-details-api",
+      "urls" :["http://localhost:3000/api/products/*"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout":"10s",
+        "maxAge": "1d",
+        "maxSize": 100
+      }
+    }
+  ]
+}

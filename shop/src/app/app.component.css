@@ -1,0 +1,12 @@
+.spacer{
+    flex: 1 1 auto;
+}
+.footer{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
+.version-text{
+    font: 500 0.8em Roboto,Helvetica Neue,sans-serif;
+    margin-bottom: 0px;
+}

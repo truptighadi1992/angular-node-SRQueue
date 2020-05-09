@@ -1,0 +1,37 @@
+<section class="top-4-per">
+    <div class="col-md-12">
+        <div class="row" *ngIf="products.length">
+            <div class="col-md-4 bottom-4-per" *ngFor="let product of products;let i= index">
+                <div class="col-md-10" style="margin:auto">
+                    <mat-card>
+                        <mat-card-header>
+                        <mat-card-title>{{product.title}}</mat-card-title>
+                        <mat-card-subtitle>{{product.seller}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <div class="d-flex justify-content-center">
+                                <img src="{{product.imageUrl}}" class="product-image"/>
+                            </div>
+                            <p>
+                                {{product.description}}
+                            </p>
+                            <p class="d-flex justify-content-center">
+                            Price : {{product.cost}}
+                            </p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" type="button">
+                                Add To Cart 
+                            </button>
+                            <button mat-raised-button color="warn" type="button"  [routerLink]="['/products',product._id]">
+                                Details
+                            </button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <h3 *ngIf="!products.length">No Products found</h3>
+    </div>
+  
+</section>
