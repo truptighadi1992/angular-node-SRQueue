@@ -1,0 +1,69 @@
+<div class="container">
+    <section class="d-flex justify-content-center">
+        <div class="col-md-5 top-15">
+            <mat-toolbar color="warn">
+                <mat-toolbar-row>
+                    <mat-icon aria-hidden="false" aria-label="person" class="lg-icon">person</mat-icon>
+                    <div class="left-10">
+                        <mat-icon class="example-icon" [class.accent-color]="i < user.life" aria-hidden="false" aria-label="Example heart icon"  class="md-icon" *ngFor="let l of life; let i = index">favorite</mat-icon>
+                    </div>
+                    <div class="spacer">
+                        {{user.username}}
+                    </div>
+                    <i class="material-icons md-18 accent-color">stars</i> 
+                    <span class="left-10 star-point">{{user.stars}}</span>
+                </mat-toolbar-row>
+            </mat-toolbar>
+        </div>
+    </section>
+    <section style="margin-top:9%">
+        <div class="row">
+            <div class="level-container" *ngFor="let level of levels;let i= index" >
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{level.name}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{level.villain.name}}</p>
+                        <img src="{{level.villain.imageURL}}"/>
+                    </mat-card-content>
+                </mat-card>
+                <div class="fight-button">
+                    <button mat-raised-button color="accent" type="button" (click)="showVillainInfo(level)">
+                        Play
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="float-right">
+            <button mat-fab color="accent" aria-label="Example icon button with a add icon" [routerLink]="['/cook']">
+              <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </section>
+</div>
+<ng-template #villainDialogTemplate>
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title>{{villainSelected.name}}</mat-card-title>
+          <mat-card-subtitle>{{villainSelected._id}}</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <div class="row rm-row-margin">
+                <img src="{{villainSelected.imageURL}}" alt="Photo of a Shiba Inu">
+                <p class="col-sm-10" style="font-size: 0.8em;">{{villainSelected.description}}</p>
+            </div>
+            <div class="top-15"> 
+                <mat-chip-list>
+                    <mat-chip *ngFor="let strength of villainSelected.strengths;let i= index">{{strength}}</mat-chip>
+                </mat-chip-list>
+            </div>
+        </mat-card-content>
+        <mat-card-actions class="center">
+            <button mat-raised-button color="warn" type="button" (click)="closePopup()">Fight</button>
+        </mat-card-actions>
+      </mat-card>
+</ng-template>

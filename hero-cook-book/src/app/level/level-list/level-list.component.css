@@ -1,0 +1,71 @@
+.spacer{
+    flex: 1 1 auto;
+    text-align: center;
+}
+.lg-icon{
+    font-size: 30px;
+}
+.md-icon{
+    font-size: 20px;
+}
+.top-15{
+    margin-top: 15px;
+}
+.left-10{
+    margin-left: 10px;
+}
+.mat-toolbar{
+    border-radius: 15px;
+    min-height: 50px;
+    height:50px;
+}
+.mat-toolbar.mat-warn {
+    background: #140a01;
+    color: #fff;
+}
+.accent-color{
+    color:#ff4081;
+}
+.star-point{
+    font: 800 16px/32px Roboto, "Helvetica Neue", sans-serif;
+}
+.level-container .mat-card{
+    background-color: #140a01;
+    color: #fff;
+    opacity: 1;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+.level-container{
+    margin-right:5%;
+    position: relative;
+}
+.fight-button {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+.level-container:hover .mat-card {
+    opacity: 0.3;
+  }
+  
+.level-container:hover .fight-button {
+    opacity: 1;
+}
+.center{
+    text-align: center;
+}
+.info-container{
+    display: inline;
+    margin-left: 15px;
+}
+.rm-row-margin{
+    margin-left: 0;
+    margin-right: -16px;
+}
